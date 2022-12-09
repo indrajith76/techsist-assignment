@@ -16,7 +16,8 @@ import { AuthContext } from "../../contexts/AuthProvider";
 import toast from "react-hot-toast";
 
 const SignUp = () => {
-  const { googleSignIn } = useContext(AuthContext);
+  const { googleSignIn, createUser, updateUserProfile } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   const [termBtn, setTermBtn] = useState(false);
 
@@ -27,7 +28,25 @@ const SignUp = () => {
   } = useForm();
 
   const handleSignIn = (data) => {
-    console.log(data);
+    const email = data.email;
+    const name = data.name;
+    const password = data.password;
+
+    createUser(email, password)
+      .then((result) => {
+        navigate("/");
+        updateUser(name);
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const updateUser = (name) => {
+    const profile = { displayName: name };
+    updateUserProfile(profile)
+      .then(() => {
+        toast.success("Account created successfully");
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleGoogleSignIn = () => {
@@ -35,7 +54,6 @@ const SignUp = () => {
       .then((result) => {
         const user = result?.user;
         toast.success("Successfully Sign In!");
-        console.log(user);
         navigate("/");
       })
       .catch((err) => {
