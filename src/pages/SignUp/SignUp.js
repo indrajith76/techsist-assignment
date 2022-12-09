@@ -16,7 +16,7 @@ import { AuthContext } from "../../contexts/AuthProvider";
 import toast from "react-hot-toast";
 
 const SignUp = () => {
-  const { googleSignIn, createUser, updateUserProfile } =
+  const { googleSignIn, createUser, updateUserProfile, facebookSignIn } =
     useContext(AuthContext);
   const navigate = useNavigate();
   const [termBtn, setTermBtn] = useState(false);
@@ -53,6 +53,18 @@ const SignUp = () => {
     googleSignIn()
       .then((result) => {
         const user = result?.user;
+        toast.success("Successfully Sign In!");
+        navigate("/");
+      })
+      .catch((err) => {
+        toast.error("Login Failed");
+        console.error(err);
+      });
+  };
+
+  const handleFacebookSignIn = () => {
+    facebookSignIn()
+      .then((result) => { 
         toast.success("Successfully Sign In!");
         navigate("/");
       })
@@ -178,11 +190,11 @@ const SignUp = () => {
             <label htmlFor="terms">I agree to privacy policy & terms</label>
           </Box>
           <Button type="submit" disabled={!termBtn}>
-            Sign In
+            Sign Up
           </Button>
         </form>
         <Typography sx={{ my: "20px", textAlign: "center" }}>
-          New on our platform? <Link to="/signup">Create an account</Link>
+          Already have an account? <Link to="/signin">Sign in instead</Link>
         </Typography>
         <Box sx={{ display: "flex", gap: "5px", alignItems: "center" }}>
           <Box sx={{ height: "1px", width: "100%", bgcolor: "gray" }} />
@@ -190,7 +202,7 @@ const SignUp = () => {
           <Box sx={{ height: "1px", width: "100%", bgcolor: "gray" }} />
         </Box>
         <Box sx={{ display: "flex", justifyContent: "center", my: "30px" }}>
-          <IconButton>
+          <IconButton onClick={handleFacebookSignIn}>
             <img src={Facebook1} alt="" />
           </IconButton>
           <IconButton onClick={handleGoogleSignIn}>
