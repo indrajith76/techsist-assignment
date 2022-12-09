@@ -14,7 +14,7 @@ const Item = styled(Box)(({ theme }) => ({
   },
 }));
 
-const pages = ["Products", "Pricing", "Blog"];
+const pages = ["Shop", "Our Story", "Blog"];
 
 const CustomGifts = () => {
   return (

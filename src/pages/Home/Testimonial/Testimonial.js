@@ -26,6 +26,7 @@ const Testimonial = () => {
           </Grid>
         ))}
       </Grid>
+      <Box sx={{height:'5px', width:'120px',bgcolor:'#D2F5F1', mt:'120px',mx:'auto'}}></Box>
     </TestimonialSection>
   );
 };

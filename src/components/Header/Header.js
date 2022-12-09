@@ -12,11 +12,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { Container } from "@mui/material";
+import { Container, FormControl, OutlinedInput } from "@mui/material";
 import logo from "../../assets/logo.png";
+import { Link } from "react-router-dom";
+import Logo2 from "../../assets/Logo2.png";
+import basketShopping2 from "../../assets/icons/basketShopping2.png";
 
 const drawerWidth = 240;
-const navItems = ["Home", "About", "Contact"];
 
 export default function Header(props) {
   const { window } = props;
@@ -26,21 +28,52 @@ export default function Header(props) {
     setMobileOpen(!mobileOpen);
   };
 
+  const navItems = (
+    <>
+      <ListItem sx={{}}>
+        <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+          <img src={basketShopping2} alt="" />
+        </Link>
+      </ListItem>
+      <ListItem sx={{}}>
+        <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+          Track Orders
+        </Link>
+      </ListItem>
+      <ListItem sx={{}}>
+        <Link to="/signin" style={{ color: "white", textDecoration: "none" }}>
+          SIgn In / Register
+        </Link>
+      </ListItem>
+    </>
+  );
+
+  const sideNavItems = (
+    <>
+      <ListItem>
+        <Button sx={{ color: "#fff" }} variant="text">
+          <Link to="/" style={{ textDecoration: "none" }}>
+            Track Orders
+          </Link>
+        </Button>
+      </ListItem>
+      <ListItem>
+        <Button sx={{ color: "#fff" }} variant="text">
+          <Link to="/signin" style={{ textDecoration: "none" }}>
+            SIgn In / Register
+          </Link>
+        </Button>
+      </ListItem>
+    </>
+  );
+
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
+        <img src={Logo2} alt="" />
       </Typography>
       <Divider />
-      <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      <List>{sideNavItems}</List>
     </Box>
   );
 
@@ -70,12 +103,13 @@ export default function Header(props) {
             <Box sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
               <img src={logo} alt="" style={{ width: "150px" }} />
             </Box>
-            <Box sx={{ display: { xs: "none", sm: "block" } }}>
-              {navItems.map((item) => (
-                <Button key={item} sx={{ color: "#fff" }} variant="text">
-                  {item}
-                </Button>
-              ))}
+            <FormControl
+              sx={{ width: "45%", bgcolor: "#fff", borderRadius: "10px" }}
+            >
+              <OutlinedInput placeholder="Please enter text" />
+            </FormControl>
+            <Box sx={{ display: { xs: "none", sm: "block", md: "flex" }, alignItems:'center' }}>
+              {navItems}
             </Box>
           </Toolbar>
         </Container>
