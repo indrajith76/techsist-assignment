@@ -4,8 +4,7 @@ import person from "../../../assets/testimonial/person.png";
 import TestimonialCard from "./TestimonialCard/TestimonialCard";
 
 const TestimonialSection = styled(Box)(({ theme }) => ({
-  textAlign: "center",
-  marginTop: "100px",
+  textAlign: "center", 
   marginBottom: "150px",
   marginTop: "150px",
   
