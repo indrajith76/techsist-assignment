@@ -6,14 +6,19 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import Logo2 from "../../assets/Logo2.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Facebook1 from "../../assets/icons/Facebook1.png";
 import Google from "../../assets/icons/Google.png";
+import { AuthContext } from "../../contexts/AuthProvider";
+import toast from "react-hot-toast";
 
 const SignIn = () => {
+  const { googleSignIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -22,6 +27,23 @@ const SignIn = () => {
 
   const handleSignIn = (data) => {
     console.log(data);
+  };
+
+  const hijibiji = ()=>{ 
+    toast.success("Successfully Sign In!");
+  }
+
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then((result) => {
+        const user = result?.user;
+        toast.success("Successfully Sign In!");
+        console.log(user);
+        navigate('/')
+      })
+      .catch((err) => {
+        toast.error('Login Failed')
+        console.error(err)});
   };
 
   return (
@@ -122,10 +144,10 @@ const SignIn = () => {
           <Box sx={{ height: "1px", width: "100%", bgcolor: "gray" }} />
         </Box>
         <Box sx={{ display: "flex", justifyContent: "center", my: "30px" }}>
-          <IconButton>
+          <IconButton onClick={hijibiji}>
             <img src={Facebook1} alt="" />
           </IconButton>
-          <IconButton>
+          <IconButton onClick={handleGoogleSignIn}>
             <img src={Google} alt="" />
           </IconButton>
         </Box>

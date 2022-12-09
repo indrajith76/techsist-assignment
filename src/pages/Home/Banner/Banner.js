@@ -21,7 +21,7 @@ const BannerCard = styled(Stack)(({ theme }) => ({
   backgroundColor: "rgba(255, 255, 255, 0.8)",
   width: "486px",
   right: "150px",
-  top: "22%",
+  top: "12%",
   borderRadius: "5px",
 }));
 

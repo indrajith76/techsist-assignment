@@ -19,13 +19,20 @@ const TestimonialCard = ({ image }) => {
         borderRadius: "10px",
         border: "1px solid #691B70",
         p: "30px",
-        "&:hover": {
+        "&:hover": { 
+          FormatQuoteIcon: "#fff",
+          bgcolor: "#691B70",
+          marginTop: "-40px",
+          duration: ".3s",
+        },
+        "&:hover > span": {
           color: "#fff",
-          bgcolor: "#691B70",  
-        }, 
+        },
       }}
     >
-      <FormatQuoteIcon sx={{ fontSize: "38px" }}></FormatQuoteIcon>
+      <span>
+        <FormatQuoteIcon sx={{ fontSize: "38px" }}></FormatQuoteIcon>
+      </span>
       <CardContent>
         <Box
           sx={{
@@ -39,14 +46,13 @@ const TestimonialCard = ({ image }) => {
             name="text-feedback"
             value={5}
             readOnly
-            precision={0.5} 
+            precision={0.5}
             emptyIcon={
-              <StarIcon style={{ opacity: 0.55 }}  fontSize="inherit" />
+              <StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />
             }
           />
         </Box>
-
-        <Typography variant="body2" color="text.secondary" sx={{ mb: "10px" }}>
+        <Typography variant="body2" color="#b1b1b1" sx={{ mb: "10px" }}>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text
           ever.

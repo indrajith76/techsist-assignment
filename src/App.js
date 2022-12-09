@@ -5,6 +5,7 @@ import Home from "./pages/Home/Home";
 import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
 import { theme } from "./theme/theme";
+import {Toaster} from 'react-hot-toast'
 
 function App() {
   const router = createBrowserRouter([
@@ -31,6 +32,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <RouterProvider router={router} />
       <CssBaseline />
+      <Toaster/>
     </ThemeProvider>
   );
 }
