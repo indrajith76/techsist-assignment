@@ -13,7 +13,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Container } from "@mui/material";
-import logo from '../../assets/logo.png'
+import logo from "../../assets/logo.png";
 
 const drawerWidth = 240;
 const navItems = ["Home", "About", "Contact"];
@@ -48,10 +48,16 @@ export default function Header(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <AppBar component="nav">
+    <Box sx={{ display: "flex", mb: "60px" }}>
+      <AppBar
+        component="nav"
+        sx={{
+          py: "10px",
+          boxShadow: "none",
+        }}
+      >
         <Container>
-          <Toolbar sx={{py:'10px'}}>
+          <Toolbar>
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -60,15 +66,13 @@ export default function Header(props) {
               sx={{ mr: 2, display: { sm: "none" } }}
             >
               <MenuIcon />
-            </IconButton> 
+            </IconButton>
             <Box sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}>
-                <img src={logo} alt="" style={{
-                    width:'150px'
-                }} />
+              <img src={logo} alt="" style={{ width: "150px" }} />
             </Box>
             <Box sx={{ display: { xs: "none", sm: "block" } }}>
               {navItems.map((item) => (
-                <Button key={item} sx={{ color: "#fff" }} variant='text'>
+                <Button key={item} sx={{ color: "#fff" }} variant="text">
                   {item}
                 </Button>
               ))}

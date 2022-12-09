@@ -7,11 +7,16 @@ export const theme = createTheme({
       gray: "#5D586C",
       black: "#231F20",
     },
+    text: {
+      primary: "#691B70",
+      secondary: "#5D586C",
+      disabled: "#231F20",
+    },
   },
   components: {
     MuiContainer: {
       defaultProps: {
-        maxWidth: "lg",
+        maxWidth: "xl",
       },
     },
     MuiButton: {
@@ -26,5 +31,8 @@ export const theme = createTheme({
         color: "primary",
       },
     },
+  },
+  typography: {
+    fontFamily: '"Barlow", sans-serif',
   },
 });
