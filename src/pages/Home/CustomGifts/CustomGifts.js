@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, styled, Box, Typography, Button } from "@mui/material";
 import customGiftsImg from "../../../assets/customGift/customGiftImg.png";
 
-const CustomGiftsContainer = styled(Box)(({ theme }) => ({
+const CustomGiftsSection = styled(Box)(({ theme }) => ({
   textAlign: "center",
   marginBottom: "100px",
   justifyContent: "center",
@@ -18,7 +18,7 @@ const pages = ["Products", "Pricing", "Blog"];
 
 const CustomGifts = () => {
   return (
-    <CustomGiftsContainer>
+    <CustomGiftsSection>
       <Box
         sx={{
           flexGrow: 1,
@@ -55,7 +55,7 @@ const CustomGifts = () => {
       <Typography
         variant="h3"
         color="textSecondary"
-        sx={{ fontSize: "38px", fontWeight: "600", mb: "10px" }}
+        sx={{ fontSize: "38px", fontWeight: "600", mb: "10px" ,color:'#231F20'}}
       >
         Custom-made Gifts
       </Typography>
@@ -80,7 +80,7 @@ const CustomGifts = () => {
           </Grid>
         ))}
       </Grid>
-    </CustomGiftsContainer>
+    </CustomGiftsSection>
   );
 };
 
