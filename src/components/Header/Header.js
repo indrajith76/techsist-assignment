@@ -145,7 +145,7 @@ export default function Header(props) {
             </Box>
             <FormControl
               sx={{
-                width: "45%",
+                width: { xs: "80%", lg: "45%" },
                 bgcolor: "#fff",
                 borderRadius: "10px",
                 position: "relative",
